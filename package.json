@@ -1,0 +1,23 @@
+{
+  "name": "xlsx2sqlite",
+  "version": "1.0.0",
+  "description": "Export a excel workbook as a sqlite database with tables.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0"
+  },
+  "keywords": [
+    "excel",
+    "sqlite"
+  ],
+  "author": "Samuel David De La Cruz",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^4.1.0",
+    "xlsx": "^0.12.0"
+  }
+}

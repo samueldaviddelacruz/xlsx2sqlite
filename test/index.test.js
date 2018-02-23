@@ -9,10 +9,10 @@ const should = chai.should()
 const fileName = "employee"
 const extension = "sqlite3"
 const columns = [
-    { 'columnName': 'name', type: 'TEXT' }
+     { 'columnName': 'name', type: 'TEXT' }
     ,{ 'columnName': 'lastName', type: 'TEXT' }
     ,{ 'columnName': 'age', type: 'INTEGER' },
-    { 'columnName': 'salary', type: 'REAL' }]
+     { 'columnName': 'salary', type: 'REAL' }]
 const tableName = "employee"
 describe('main functions', () => {
     before(function () {
@@ -40,9 +40,7 @@ describe('main functions', () => {
 
         });
 
-    })
-
-
+    });
 
     describe('table creation', () => {
 
@@ -50,15 +48,15 @@ describe('main functions', () => {
 
             it('should create a table in an open database', () => {
 
-
                 const createdDb = createDatabase(fileName);
                 const dbChanges = createTable(createdDb, tableName, columns);
                 dbChanges.changes.should.exist;
 
             });
-        });
 
-    })
+        });
+    
+    });
 
 })
 

@@ -1,6 +1,7 @@
 const {
   mapRowsToSqliteColumns,
-  getSheetsFromExcelWorkBook
+  getSheetsFromExcelWorkBook,
+  getTablesFromSheets
 } = require("../lib/Util/Utils");
 const chai = require("chai");
 const xlsx = require("xlsx");
@@ -19,15 +20,20 @@ describe("util functions", () => {
   });
   describe("mapRowsToSqliteColumns", () => {
     it("should return an Array of sql types columns", async () => {
-      const sheetJsons = getSheetsFromExcelWorkBook("test.xlsx").map(data => {
-        return {
-          sheetName: data.name,
-          jsonRows: xlsx.utils.sheet_to_json(data.sheet, { defval: "" })
-        };
-      });     
+      const sheetJsons = getSheetsFromExcelWorkBook("test.xlsx");     
       const columns = mapRowsToSqliteColumns(sheetJsons[0].jsonRows);
       columns.length.should.be.greaterThan(0);
       
     });
   });
+  describe("getTablesFromSheets", () => {
+    it("should return an array of Table Objects", async () => {
+      const sheetJsons = getSheetsFromExcelWorkBook("test.xlsx");     
+      const tables = getTablesFromSheets(sheetJsons);
+      tables[0].columns.length.should.be.greaterThan(0);
+      tables[0].rows.length.should.be.greaterThan(0);
+
+    });
+  });
+
 });
